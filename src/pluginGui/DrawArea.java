@@ -46,6 +46,8 @@ import gui.KSMTable;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import pluginCore.DataModel;
 import pluginGui.lineFunctions.Function;
@@ -815,6 +817,7 @@ public class DrawArea extends JPanel {
             }
             NamedPolygon pol = new NamedPolygon(polygon.xpoints, polygon.ypoints, polygon.npoints);
             pol.setName(description);
+            searchInnerPoints(pol);
             polygons.add(pol);
             data.fillLegendList(numOvals, description);
             polygon = new Polygon();
@@ -867,5 +870,20 @@ public class DrawArea extends JPanel {
                 repaint();
             }
         }
+    }
+
+    public void searchInnerPoints(NamedPolygon pol){
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode(pol.getName());
+        List<String> innerPoints = new ArrayList<String>();
+        for(int i=0; i<points.size();i++){
+            if(pol.contains(points.elementAt(i))){
+                String name = data.getListModelNodes().getElementAt(i).toString();
+                innerPoints.add(name);
+                DefaultMutableTreeNode child = new DefaultMutableTreeNode(name,false);
+                root.add(child);
+            }
+        }
+        
+        data.getPolyModel().insertNodeInto(root, data.getRoot(), 0);
     }
 }

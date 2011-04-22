@@ -38,7 +38,7 @@ public class TextAreas implements RightPanelMenuEntry{
 
     public TextAreas(SumChartPluginPerspective parent) {
         this.parent = parent;
-        this.name = "Text areas";
+        this.name = "Areas";
 
         list = new JList();
         list.setModel(parent.getDataModel().getListModelOvals());

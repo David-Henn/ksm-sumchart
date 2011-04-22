@@ -59,6 +59,7 @@ public class SumChartPluginPerspective implements IPerspective {
         entries.add(new Legend());
         entries.add(new Settings(this));
         entries.add(new TextAreas(this));
+        entries.add(new PolyTree(data));
         rightPanel = new RightPanelSkeleton(entries);
 
         JToolBar toolbar = new JToolBar();

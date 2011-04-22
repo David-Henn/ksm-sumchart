@@ -27,6 +27,9 @@ import javax.swing.DefaultListModel;
 import core.StartKSM;
 import gui.AbstractGraphNode;
 import gui.ksmEditor.KSMEditor;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 public class DataModel {
 
@@ -48,14 +51,38 @@ public class DataModel {
     private ArrayList<String> legendArray;
     private Vector<AbstractGraphNode> vectorNodes;
     private KSMEditor ksmEditor;
+    private JTree polygonTree;
+    private DefaultMutableTreeNode root;
+    private DefaultTreeModel polyModel;
+
+    public DefaultMutableTreeNode getRoot() {
+        return root;
+    }
+
+    public void setRoot(DefaultMutableTreeNode root) {
+        this.root = root;
+    }
+
+    public JTree getPolygonTree() {
+        return polygonTree;
+    }
+
+    public void setPolygonTree(JTree polygonTree) {
+        this.polygonTree = polygonTree;
+    }
 
     public DataModel() {
         listModelNodes = new DefaultListModel();
         listModelOvals = new DefaultListModel();
         legendArray = new ArrayList<String>();
         vectorNodes = new Vector<AbstractGraphNode>();
+        root = new DefaultMutableTreeNode();
+        polyModel = new DefaultTreeModel(root);
+        polygonTree = new JTree(polyModel);
+        //polygonTree.setRootVisible(false);
         ksmEditor = StartKSM.getKSMEditor();
         draw = false;
+
 
         passive = 0.5;
         active = 1.5;
@@ -64,6 +91,14 @@ public class DataModel {
         average = 1.0;
 
         this.refreshData();
+    }
+
+    public DefaultTreeModel getPolyModel() {
+        return polyModel;
+    }
+
+    public void setPolyModel(DefaultTreeModel polyModel) {
+        this.polyModel = polyModel;
     }
     public boolean isDrawArea() {
         return drawArea;
