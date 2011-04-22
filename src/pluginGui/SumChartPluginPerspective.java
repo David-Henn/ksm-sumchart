@@ -58,7 +58,7 @@ public class SumChartPluginPerspective implements IPerspective {
         List<RightPanelMenuEntry> entries = new LinkedList<RightPanelMenuEntry>();
         entries.add(new Legend());
         entries.add(new Settings(this));
-        entries.add(new TextAreas(this));
+        //entries.add(new TextAreas(this));
         entries.add(new PolyTree(data));
         rightPanel = new RightPanelSkeleton(entries);
 
