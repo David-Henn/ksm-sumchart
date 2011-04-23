@@ -9,7 +9,7 @@ import java.awt.Point;
 
 /**
  *
- * @author jDave
+ * @author jDave, Mischa
  * @date 10.4.11
  */
 public class yAxis implements Function{
@@ -21,7 +21,26 @@ public class yAxis implements Function{
      * @return Point(x-Value,0)
      */
     public Point calcY(int x, int y) {
-        return new Point((int)x,0);
+
+        int xOffset = 40;
+        int maxY = 460;
+        int yOffset = 40;
+
+        if(y>maxY)
+        {
+            return new Point(xOffset, maxY);
+        }
+        else
+        {
+            if(y<yOffset)
+            {
+                return new Point(xOffset, yOffset);
+            }
+            else
+            {
+                return new Point(xOffset, (int)y);
+            }
+        }
     }
 
 }

@@ -21,8 +21,28 @@ public class Xaxis implements Function {
      * @return Point(0, y-Value)
      */
     public Point calcY(int x, int y) {
-        return new Point(0, (int)y);
+        //System.out.print(x);
+        //System.out.print(", "+y+ "\n");
 
+        int yOffset = 460;
+        int xOffset = 40;
+        int maxX = 520;
+
+        if(x<xOffset)
+        {
+            return new Point(xOffset,yOffset);
+        }
+        else{
+            if(x>maxX)
+            {
+                return new Point(maxX,yOffset);
+            }
+            else
+            {
+                return new Point((int)x,yOffset);
+            }
+        }
+        
     }
 
 }
