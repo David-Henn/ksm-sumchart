@@ -14,6 +14,18 @@ import java.awt.Point;
  */
 public class Xaxis implements Function {
 
+    private int yOffset = 460;
+    private int xOffset = 40;
+    private int maxX = 520;
+
+
+    public Xaxis(int areaHeight, int areaWidth, int borderLength)
+    {
+        this.xOffset = borderLength;
+        this.yOffset = (areaHeight - borderLength);
+        this.maxX = (areaWidth - borderLength);
+    }
+
     /**
      *
      * @param x doesn't matter
@@ -23,10 +35,6 @@ public class Xaxis implements Function {
     public Point calcY(int x, int y) {
         //System.out.print(x);
         //System.out.print(", "+y+ "\n");
-
-        int yOffset = 460;
-        int xOffset = 40;
-        int maxX = 520;
 
         if(x<xOffset)
         {

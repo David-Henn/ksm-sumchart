@@ -14,6 +14,18 @@ import java.awt.Point;
  */
 public class yAxis implements Function{
 
+    int xOffset = 40;
+    int maxY = 460;
+    int yOffset = 40;
+
+    public yAxis(int areaHeight, int areaWidth, int borderLength)
+    {
+        this.xOffset = borderLength;
+        this.yOffset = borderLength;
+        this.maxY = (areaHeight - borderLength);
+    }
+
+
     /**
      *
      * @param x x-Value
@@ -21,10 +33,6 @@ public class yAxis implements Function{
      * @return Point(x-Value,0)
      */
     public Point calcY(int x, int y) {
-
-        int xOffset = 40;
-        int maxY = 460;
-        int yOffset = 40;
 
         if(y>maxY)
         {

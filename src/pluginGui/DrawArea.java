@@ -205,8 +205,8 @@ public class DrawArea extends JPanel {
      */
     private void setPoint(int x, int y){
         Function functions[] = new Function[3];
-        functions[0]=new Xaxis();
-        functions[1]=new yAxis();
+        functions[0]=new Xaxis(this.getHeight(), this.getWidth(), this.borderWidth);
+        functions[1]=new yAxis(this.getHeight(), this.getWidth(), this.borderWidth);
         functions[2]=new Qaxis();
 
         Point bestPoint = new Point();
