@@ -253,7 +253,8 @@ public class DrawArea extends JPanel {
                 int transparency = (int) ((int) polygon.getBounds().getWidth() + polygon.getBounds().getHeight());
 
                 g.setColor(ovalColor[2-x_index][2-y_index]);
-                Composite c = AlphaComposite.getInstance(AlphaComposite.SRC_OVER,Math.abs(1 - (float) transparency / 1000) % 1);
+                g.drawPolygon(polygon);
+                Composite c = AlphaComposite.getInstance(AlphaComposite.SRC_OVER,0.1f);
 
                 g2d.setComposite(c);
 
@@ -265,13 +266,14 @@ public class DrawArea extends JPanel {
         for (NamedPolygon pol : polygons) {
             int x_index = (int) pol.getBounds().getCenterX() / (this.getWidth() / 3)%2;
             int y_index = (int) pol.getBounds().getCenterY() / (this.getWidth() / 3)%2;
-            int transparency = (int) ((int) pol.getBounds().getWidth() + pol.getBounds().getHeight());
+            //int transparency = (int) ((int) pol.getBounds().getWidth() + pol.getBounds().getHeight());
 
             g.setColor(Color.black);
             g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
             g.drawString(pol.getName(), (int)pol.getBounds().getCenterX(), (int)pol.getBounds().getCenterY());
             g.setColor(ovalColor[2 - x_index][2 - y_index]);
-            Composite c = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, Math.abs(1 - (float) transparency / 1000) % 1);
+            g.drawPolygon(pol);
+            Composite c = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.1f/*Math.abs(1 - (float) transparency / 1000) % 1*/);
 
             g2d.setComposite(c);
             g.fillPolygon(pol);
@@ -821,6 +823,7 @@ public class DrawArea extends JPanel {
             polygons.add(pol);
             data.fillLegendList(numOvals, description);
             polygon = new Polygon();
+            //parent.getCenterParent().getRightPane().validate();
             repaint();
             
         }

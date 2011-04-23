@@ -72,6 +72,11 @@ public class CenterPanel extends JPanel {
         });
     }
 
+
+    public SumChartPluginPerspective getCenterParent() {
+        return parent;
+    }
+
     public void markListElement(int i) {
         if (i < 0) {
             parent.getLeftPane().getNodeList().clearSelection();
